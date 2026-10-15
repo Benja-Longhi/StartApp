@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 interface OptionsMenuProps {
     options: string[]; 
     onSelectOption: (selectedOption: string) => void; 
-    handleOptionClick: Function;
+    handleOptionClick: (option: string) => void;
     selectedOption: string;
 }
 

@@ -1,6 +1,9 @@
+import type { StylesConfig } from 'react-select';
 
-const customStyles = {
-    control: (styles : string[]) => ({
+export type SelectOption = { value: string; label: string };
+
+const customStyles: StylesConfig<SelectOption, true> = {
+    control: (styles) => ({
       ...styles,
       backgroundColor: '#0D1117',
       border: 'none',
@@ -17,7 +20,7 @@ const customStyles = {
         borderColor: '#6366F1',
       },
     }),
-    placeholder: (styles : string[]) => ({
+    placeholder: (styles) => ({
       ...styles,
       color: '#3A4D64',
       fontSize: '1rem',
@@ -25,7 +28,7 @@ const customStyles = {
       lineHeight: '1.25rem',
       letterSpacing: '0.01em',
     }),
-    multiValue: (styles : string[]) => ({
+    multiValue: (styles) => ({
       ...styles,
       backgroundColor: '#35039F',
       color: '#F3F4F6',
@@ -36,7 +39,7 @@ const customStyles = {
       letterSpacing: '0.01em',
       marginBottom: '0.5rem',
     }),
-    multiValueLabel: (styles : string[]) => ({
+    multiValueLabel: (styles) => ({
       ...styles,
       color: '#F3F4F6',
       fontSize: '0.875rem',
@@ -44,7 +47,7 @@ const customStyles = {
       lineHeight: '1.25rem',
       letterSpacing: '0.01em',
     }),
-    multiValueRemove: (styles : string[]) => ({
+    multiValueRemove: (styles) => ({
         ...styles,
         color: '#F3F4F6',
         fontSize: '0.875rem',
@@ -56,7 +59,7 @@ const customStyles = {
             color: '#F3F4F6',
         },
     }),
-    option: (styles : string[]) => {
+    option: (styles) => {
         return {
             ...styles,
             backgroundColor: '#0D1117',
@@ -70,7 +73,7 @@ const customStyles = {
             },
         };
     },
-    menu: (styles : string[]) => ({
+    menu: (styles) => ({
       ...styles,
       backgroundColor: '#0D1117',
       color: '#F3F4F6',

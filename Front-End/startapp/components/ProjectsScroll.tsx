@@ -60,25 +60,33 @@ const Project = (
     );
 }
 
+// Datos de prueba: se generan una sola vez, fuera del render
+const projectState = ["In Progress", "Finished", "Abandoned"];
+const amountProjects = 12;
+const mockProjects = [...Array(amountProjects)].map((_, index) => {
+    const members = Math.round(Math.random() * 8 + 2);
+    return {
+        title: `Project ${index + 1}`,
+        members,
+        joined: members - 1,
+        state: projectState[Math.round(Math.random() * 2)],
+        likes: Math.round(Math.random() * 100),
+    };
+});
+
 const ProjectsScroll = () => {
-    let amountProjects = 12;
-    let projectNumber = 0;
-    let amountMembers = 0;
-    let amountLikes = 0;
-    const projectState = ["In Progress", "Finished", "Abandoned"];
     return (
         <section className="overflow-hidden">
             <div className={amountProjects > 6 ? "max-h-[500px] overflow-y-auto grid grid-cols-4 gap-4 px-2" : "grid grid-cols-4"}>
-                {[...Array(amountProjects)].map((_, index) => (
-                    <div className="col-span-1">
+                {mockProjects.map((project, index) => (
+                    <div className="col-span-1" key={index}>
                         <Project
-                            key={index}
-                            title={`Project ${projectNumber += 1}`}
+                            title={project.title}
                             description="Lorem ipsum dolor sit."
-                            members={amountMembers = Math.round(Math.random() * 8 + 2)}
-                            joined={amountMembers - 1}
-                            state={projectState[Math.round(Math.random() * 2)]}
-                            likes={amountLikes = Math.round(Math.random() * 100)}
+                            members={project.members}
+                            joined={project.joined}
+                            state={project.state}
+                            likes={project.likes}
                         />
                     </div>
                 ))}

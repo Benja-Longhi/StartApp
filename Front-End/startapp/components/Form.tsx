@@ -16,7 +16,7 @@ const Input = ({
     placeHolder: string;
     name: string;
     value: string;
-    onChange: (e:  React.FormEvent) => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
 return (
     <div className="my-2">
@@ -41,7 +41,7 @@ const PasswordInput = ({
     } : {
     name : string | undefined; 
     value : string;
-    onChange : (e: React.FormEvent) => void;
+    onChange : (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
     const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -75,7 +75,7 @@ const SignUpForm = () => {
       username: '',
       email: '',
       password: '',
-      selectedOptions: [],
+      selectedOptions: [] as string[],
     });
   
     const handleSubmit = (e : React.FormEvent) => {
@@ -89,7 +89,7 @@ const SignUpForm = () => {
       });
     };
   
-    const handleInputChange = (e :  React.FormEvent) => {
+    const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
     };

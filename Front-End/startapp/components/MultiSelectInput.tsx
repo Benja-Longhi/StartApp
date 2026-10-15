@@ -1,6 +1,6 @@
-import React from 'react';
-import Select from 'react-select';
-import customStyles from './selectCustomStyles';
+import React, { useId } from 'react';
+import Select, { type MultiValue } from 'react-select';
+import customStyles, { type SelectOption } from './selectCustomStyles';
 
 interface MultiSelectInputProps {
   name: string;
@@ -15,19 +15,20 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
   selectedOptions,
   onSelectedOptionsChange,
 }) => {
-  const handleSelectChange = (selectedValues: { value: string; label: string }[]) => {
+  const instanceId = useId();
+
+  const handleSelectChange = (selectedValues: MultiValue<SelectOption>) => {
     const selectedOptionValues = selectedValues.map((option) => option.value);
     onSelectedOptionsChange(selectedOptionValues);
   };
 
-  const selectedOptionValues = selectedOptions.map((option) => {
-    return options.find((o) => o.value === option);
-  });
+  const selectedOptionValues = options.filter((o) => selectedOptions.includes(o.value));
 
   return (
     <div className="w-96 h-12">
       <Select
         isMulti
+        instanceId={instanceId}
         options={options}
         name={name}
         value={selectedOptionValues}
