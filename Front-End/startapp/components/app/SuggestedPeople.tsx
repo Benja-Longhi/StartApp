@@ -32,7 +32,7 @@ export function SuggestedPeople() {
                 onClick={() => toggle(person.name)}
                 aria-pressed={isFollowing}
                 className={clsx(
-                  "h-8 shrink-0 rounded-lg px-3.5 text-xs font-semibold transition-colors",
+                  "h-8 shrink-0 rounded-lg px-3.5 text-xs font-semibold transition-all duration-200 active:scale-95",
                   isFollowing
                     ? "border border-line text-muted hover:text-ink"
                     : "bg-primary text-white hover:bg-primary-hover"

@@ -38,13 +38,13 @@ export function AppShell({
                 aria-label={label}
                 aria-current={active ? "page" : undefined}
                 className={clsx(
-                  "relative flex h-12 w-12 items-center justify-center rounded-2xl transition-colors",
-                  active ? "bg-primary text-white" : "text-muted hover:bg-elevated hover:text-ink"
+                  "group relative flex h-13 w-13 items-center justify-center rounded-2xl transition-all duration-200",
+                  active ? "bg-primary text-white shadow-glow" : "text-muted hover:bg-elevated hover:text-ink"
                 )}
               >
-                <Icon size={20} />
+                <Icon size={22} className="transition-transform duration-200 group-hover:scale-110" />
                 {label === "Notifications" && unread > 0 && !active && (
-                  <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-brand-pink" />
+                  <span className="absolute right-3 top-3 h-2 w-2 animate-pulse rounded-full bg-brand-pink" />
                 )}
               </Link>
             );
@@ -90,14 +90,14 @@ export function AppShell({
               className="relative hidden h-12 w-12 items-center justify-center rounded-2xl bg-surface text-muted hover:text-ink sm:flex"
             >
               <Bell size={20} />
-              {unread > 0 && <span className="absolute right-3 top-3 h-2 w-2 rounded-full bg-brand-pink" />}
+              {unread > 0 && <span className="absolute right-3 top-3 h-2 w-2 animate-pulse rounded-full bg-brand-pink" />}
             </Link>
             <Avatar name="Benjamín Longhi" className="h-12 w-12 rounded-2xl" />
           </div>
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-5 pb-28 pt-8 md:px-8 md:pb-12">{children}</main>
+      <main className="mx-auto max-w-7xl animate-fade-up px-5 pb-28 pt-8 md:px-8 md:pb-12">{children}</main>
 
       {/* Barra inferior (móvil) */}
       <nav

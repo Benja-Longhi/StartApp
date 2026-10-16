@@ -2,13 +2,13 @@ import Link from "next/link";
 import clsx from "clsx";
 
 type Variant = "primary" | "secondary" | "ghost" | "outline";
-type Size = "sm" | "md" | "lg";
+type Size = "sm" | "md" | "nav" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-colors duration-200 disabled:pointer-events-none disabled:opacity-50";
+  "group inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 [&_svg.lucide-arrow-right]:transition-transform [&_svg.lucide-arrow-right]:duration-200 hover:[&_svg.lucide-arrow-right]:translate-x-1";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-primary text-white hover:bg-primary-hover",
+  primary: "bg-primary text-white hover:bg-primary-hover hover:shadow-glow",
   secondary: "bg-elevated text-ink hover:bg-line",
   ghost: "text-muted hover:text-ink hover:bg-elevated",
   outline: "border border-line text-ink hover:border-primary-soft hover:text-white",
@@ -17,6 +17,7 @@ const variants: Record<Variant, string> = {
 const sizes: Record<Size, string> = {
   sm: "h-9 px-4 text-sm",
   md: "h-11 px-5 text-sm",
+  nav: "h-12 px-6 text-base",
   lg: "h-14 px-7 text-base",
 };
 

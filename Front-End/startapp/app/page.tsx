@@ -3,6 +3,7 @@ import { ArrowRight, Lightbulb, Rocket, Search, Sparkles, Target, Users } from "
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { ButtonLink } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
 import { Avatar } from "@/components/ui/Avatar";
 import { projects } from "@/lib/data";
 
@@ -51,22 +52,22 @@ export default function Home() {
       <main className="overflow-x-clip">
         {/* Hero */}
         <section className="relative">
-          <div className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-primary/30 blur-[140px]" />
+          <div className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] animate-glow rounded-full bg-primary/30 blur-[140px]" />
           <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-36 md:grid-cols-[1.1fr_1fr] md:pb-28 md:pt-44">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 px-3 py-1.5 text-xs font-medium text-muted">
+              <span className="inline-flex animate-fade-up items-center gap-2 rounded-full border border-line bg-surface/80 px-3 py-1.5 text-xs font-medium text-muted">
                 <Sparkles size={14} className="text-primary-soft" />
                 Where student ideas become startups
               </span>
-              <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-heading text-white md:text-7xl">
+              <h1 className="anim-delay-100 mt-6 animate-fade-up text-5xl font-bold leading-[1.05] tracking-heading text-white md:text-7xl">
                 Build your own{" "}
-                <span className="bg-brand-gradient bg-clip-text text-transparent">team project</span>
+                <span className="animate-gradient-pan bg-brand-gradient bg-[length:200%_auto] bg-clip-text text-transparent">team project</span>
               </h1>
-              <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted md:text-xl">
+              <p className="anim-delay-200 mt-6 max-w-lg animate-fade-up text-lg leading-relaxed text-muted md:text-xl">
                 Connect ideas with people to create startups and unique ventures. Find teammates, share
                 projects and build something real.
               </p>
-              <div className="mt-10 flex flex-wrap gap-3">
+              <div className="anim-delay-300 mt-10 flex animate-fade-up flex-wrap gap-3">
                 <ButtonLink href="/signup" size="lg">
                   Get started <ArrowRight size={18} />
                 </ButtonLink>
@@ -75,14 +76,14 @@ export default function Home() {
                 </ButtonLink>
               </div>
             </div>
-            <div className="relative mx-auto w-full max-w-md md:max-w-none">
+            <div className="anim-delay-300 relative mx-auto w-full max-w-md animate-fade-in md:max-w-none">
               <Image
                 src="/img/Imagen Vectorial.png"
                 alt=""
                 width={881}
                 height={776}
                 priority
-                className="relative h-auto w-full drop-shadow-[0_40px_80px_rgba(86,3,222,0.45)]"
+                className="relative h-auto w-full animate-float drop-shadow-[0_40px_80px_rgba(86,3,222,0.45)]"
               />
             </div>
           </div>
@@ -91,7 +92,7 @@ export default function Home() {
         {/* Features */}
         <section className="mx-auto max-w-6xl space-y-6 px-5 py-12">
           {features.map(({ icon: Icon, title, body, stat, statLabel }, index) => (
-            <div
+            <Reveal
               key={title}
               className="grid items-center gap-10 rounded-3xl border border-line/60 bg-surface p-8 md:grid-cols-2 md:p-14"
             >
@@ -107,28 +108,33 @@ export default function Home() {
                 <p className="mt-1 text-sm text-muted">{statLabel}</p>
               </div>
               <FeatureVisual index={index} />
-            </div>
+            </Reveal>
           ))}
         </section>
 
         {/* How it works */}
         <section id="how-it-works" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-24">
-          <div className="mx-auto max-w-2xl text-center">
+          <Reveal className="mx-auto max-w-2xl text-center">
             <h2 className="text-4xl font-bold tracking-heading text-white md:text-5xl">How it works</h2>
             <p className="mt-4 text-lg text-muted">Three steps from a rough idea to a team that ships.</p>
-          </div>
+          </Reveal>
           <ol className="mt-14 grid gap-6 md:grid-cols-3">
             {steps.map(({ icon: Icon, title, body }, index) => (
-              <li key={title} className="rounded-3xl border border-line/60 bg-surface p-8">
+              <Reveal
+                as="li"
+                key={title}
+                delay={index * 120}
+                className="group rounded-3xl border border-line/60 bg-surface p-8 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-card-hover"
+              >
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary-soft">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary-soft transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
                     <Icon size={22} />
                   </span>
                   <span className="text-sm font-semibold text-muted">0{index + 1}</span>
                 </div>
                 <h3 className="mt-6 text-xl font-semibold text-white">{title}</h3>
                 <p className="mt-3 leading-relaxed text-muted">{body}</p>
-              </li>
+              </Reveal>
             ))}
           </ol>
         </section>
@@ -137,7 +143,7 @@ export default function Home() {
         <section id="community" className="relative scroll-mt-24 py-24">
           <div className="pointer-events-none absolute inset-x-0 top-1/2 mx-auto h-[400px] max-w-4xl -translate-y-1/2 rounded-full bg-brand-violet/20 blur-[140px]" />
           <div className="relative mx-auto max-w-6xl px-5">
-            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div>
                 <h2 className="text-4xl font-bold tracking-heading text-white md:text-5xl">
                   Projects looking for you
@@ -147,10 +153,15 @@ export default function Home() {
               <ButtonLink href="/projects" variant="outline">
                 See all projects <ArrowRight size={16} />
               </ButtonLink>
-            </div>
+            </Reveal>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {featured.map((project) => (
-                <article key={project.id} className="flex flex-col rounded-3xl border border-line/60 bg-surface p-7">
+              {featured.map((project, index) => (
+                <Reveal
+                  as="article"
+                  key={project.id}
+                  delay={index * 120}
+                  className="flex flex-col rounded-3xl border border-line/60 bg-surface p-7 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-card-hover"
+                >
                   <div className="flex items-center gap-3">
                     <Avatar name={project.owner} />
                     <div>
@@ -169,7 +180,7 @@ export default function Home() {
                       ))}
                     </div>
                   )}
-                </article>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -177,20 +188,22 @@ export default function Home() {
 
         {/* CTA */}
         <section className="mx-auto max-w-6xl px-5 pb-24">
-          <div className="relative overflow-hidden rounded-3xl bg-brand-gradient px-8 py-16 text-center md:px-16">
-            <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-2xl" />
-            <h2 className="relative text-4xl font-bold tracking-heading text-white md:text-5xl">
-              Your next team starts here.
-            </h2>
-            <p className="relative mx-auto mt-4 max-w-xl text-lg text-white/80">
-              Create a free account, tell us your skills and start building with people who share your drive.
-            </p>
-            <div className="relative mt-10 flex justify-center">
-              <ButtonLink href="/signup" size="lg" className="bg-white text-primary hover:bg-white/90">
-                Create your account <ArrowRight size={18} />
-              </ButtonLink>
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl bg-brand-gradient bg-[length:200%_200%] px-8 py-16 text-center animate-gradient-pan md:px-16">
+              <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 animate-float rounded-full bg-white/10 blur-2xl" />
+              <h2 className="relative text-4xl font-bold tracking-heading text-white md:text-5xl">
+                Your next team starts here.
+              </h2>
+              <p className="relative mx-auto mt-4 max-w-xl text-lg text-white/80">
+                Create a free account, tell us your skills and start building with people who share your drive.
+              </p>
+              <div className="relative mt-10 flex justify-center">
+                <ButtonLink href="/signup" size="lg" className="bg-white text-primary hover:bg-white/90">
+                  Create your account <ArrowRight size={18} />
+                </ButtonLink>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </section>
       </main>
 
@@ -252,7 +265,7 @@ function FeatureVisual({ index }: { index: number }) {
           <span>67%</span>
         </div>
         <div className="mt-2 h-2 rounded-full bg-elevated">
-          <div className="h-2 w-2/3 rounded-full bg-brand-gradient" />
+          <div className="h-2 w-2/3 animate-gradient-pan rounded-full bg-brand-gradient bg-[length:200%_auto]" />
         </div>
       </div>
     </div>

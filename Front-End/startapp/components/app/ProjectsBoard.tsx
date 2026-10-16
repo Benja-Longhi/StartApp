@@ -26,7 +26,7 @@ export function ProjectsBoard() {
             onClick={() => setCategory(item)}
             aria-pressed={category === item}
             className={clsx(
-              "shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors",
+              "shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 active:scale-95",
               category === item ? "bg-white text-canvas" : "bg-surface text-muted hover:text-ink"
             )}
           >
@@ -36,8 +36,8 @@ export function ProjectsBoard() {
       </div>
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2 2xl:grid-cols-3">
-        {visible.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {visible.map((project, index) => (
+          <ProjectCard key={`${category}-${project.id}`} project={project} index={index} />
         ))}
       </div>
     </section>

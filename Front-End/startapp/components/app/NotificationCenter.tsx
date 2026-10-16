@@ -87,14 +87,18 @@ export function NotificationCenter({ initial }: { initial: Notification[] }) {
         <p className="px-6 py-16 text-center text-muted">You&apos;re all caught up.</p>
       ) : (
         <ul className="divide-y divide-line/60">
-          {visible.map((n) => {
+          {visible.map((n, index) => {
             const { text, icon: Icon, tone } = describe(n);
             const response = responses[n.id];
             return (
               <li
-                key={n.id}
+                key={`${tab}-${n.id}`}
                 onClick={() => !n.read && markRead(n.id)}
-                className={clsx("flex gap-4 p-6 transition-colors", !n.read && "cursor-pointer bg-primary/[0.04]")}
+                style={{ animationDelay: `${index * 50}ms` }}
+                className={clsx(
+                  "flex animate-fade-up gap-4 p-6 transition-colors duration-300",
+                  !n.read && "cursor-pointer bg-primary/[0.04] hover:bg-primary/[0.08]"
+                )}
               >
                 <div className="relative">
                   <Avatar name={n.from} />
@@ -110,7 +114,7 @@ export function NotificationCenter({ initial }: { initial: Notification[] }) {
 
                   {n.kind === "join_request" &&
                     (response ? (
-                      <p className={clsx("mt-3 text-xs font-semibold", response === "accepted" ? "text-success" : "text-muted")}>
+                      <p className={clsx("mt-3 animate-fade-in text-xs font-semibold", response === "accepted" ? "text-success" : "text-muted")}>
                         {response === "accepted" ? "Request accepted" : "Request declined"}
                       </p>
                     ) : (

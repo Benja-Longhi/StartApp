@@ -12,12 +12,15 @@ const statusStyles: Record<ProjectStatus, string> = {
   Launched: "bg-primary/20 text-primary-soft",
 };
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   const [liked, setLiked] = useState(false);
   const likes = project.likes + (liked ? 1 : 0);
 
   return (
-    <article className="flex flex-col rounded-3xl border border-line/60 bg-surface p-6 transition-colors hover:border-line">
+    <article
+      style={{ animationDelay: `${index * 60}ms` }}
+      className="flex animate-fade-up flex-col rounded-3xl border border-line/60 bg-surface p-6 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-card-hover"
+    >
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <Avatar name={project.owner} size="sm" />
@@ -61,7 +64,11 @@ export function ProjectCard({ project }: { project: Project }) {
             liked ? "text-brand-pink" : "text-muted hover:text-ink"
           )}
         >
-          <Heart size={16} className={clsx(liked && "fill-current")} /> {likes}
+          <Heart
+            size={16}
+            className={clsx("transition-transform duration-300", liked && "scale-125 fill-current")}
+          />{" "}
+          {likes}
         </button>
       </div>
     </article>

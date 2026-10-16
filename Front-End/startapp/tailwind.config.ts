@@ -36,6 +36,49 @@ const config: Config = {
       },
       boxShadow: {
         glow: "0 0 80px -20px rgba(86, 3, 222, 0.6)",
+        "card-hover": "0 20px 60px -24px rgba(86, 3, 222, 0.55)",
+      },
+      spacing: {
+        13: "3.25rem",
+      },
+      keyframes: {
+        "fade-up": {
+          from: { opacity: "0", translate: "0 24px" },
+          to: { opacity: "1", translate: "0 0" },
+        },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "scale-in": {
+          from: { opacity: "0", transform: "scale(0.96)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
+        "slide-down": {
+          from: { opacity: "0", translate: "0 -8px" },
+          to: { opacity: "1", translate: "0 0" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%": { transform: "translateY(-18px) rotate(2deg)" },
+        },
+        glow: {
+          "0%, 100%": { opacity: "0.55", transform: "scale(1)" },
+          "50%": { opacity: "0.85", transform: "scale(1.08)" },
+        },
+        "gradient-pan": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+      },
+      animation: {
+        "fade-up": "fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "fade-in": "fade-in 0.6s ease-out both",
+        "scale-in": "scale-in 0.25s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "slide-down": "slide-down 0.25s ease-out both",
+        float: "float 7s ease-in-out infinite",
+        glow: "glow 8s ease-in-out infinite",
+        "gradient-pan": "gradient-pan 8s ease-in-out infinite",
       },
     },
   },

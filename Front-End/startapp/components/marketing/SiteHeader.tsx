@@ -31,14 +31,18 @@ export function SiteHeader() {
         scrolled || open ? "border-line/70 bg-canvas/85 backdrop-blur-xl" : "border-transparent"
       )}
     >
-      <nav className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5">
-        <div className="flex items-center gap-10">
-          <Logo />
-          <ul className="hidden items-center gap-8 text-sm font-medium md:flex">
+      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5">
+        <div className="flex items-center gap-12">
+          <Logo className="[&_img]:h-10" />
+          <ul className="hidden items-center gap-9 text-base font-semibold md:flex">
             {links.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-muted transition-colors hover:text-ink">
+                <Link
+                  href={link.href}
+                  className="group relative py-2 text-muted transition-colors duration-200 hover:text-white"
+                >
                   {link.label}
+                  <span className="absolute inset-x-0 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-brand-gradient transition-transform duration-300 ease-out group-hover:scale-x-100" />
                 </Link>
               </li>
             ))}
@@ -46,10 +50,10 @@ export function SiteHeader() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <ButtonLink href="/login" variant="ghost" size="sm">
+          <ButtonLink href="/login" variant="ghost" size="nav">
             Log in
           </ButtonLink>
-          <ButtonLink href="/signup" size="sm">
+          <ButtonLink href="/signup" size="nav">
             Get started
           </ButtonLink>
         </div>
@@ -61,19 +65,19 @@ export function SiteHeader() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={26} /> : <Menu size={26} />}
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-line/70 px-5 pb-6 pt-2 md:hidden">
+        <div className="animate-slide-down border-t border-line/70 px-5 pb-6 pt-2 md:hidden">
           <ul className="flex flex-col">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block py-3 text-base font-medium text-muted hover:text-ink"
+                  className="block py-3.5 text-lg font-semibold text-muted hover:text-ink"
                 >
                   {link.label}
                 </Link>
