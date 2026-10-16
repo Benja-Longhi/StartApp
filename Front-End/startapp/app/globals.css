@@ -1,28 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* width */
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary/60 text-white;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary-soft ring-offset-2 ring-offset-canvas;
+  }
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-	width: 10px;
+  width: 10px;
+  height: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
-	background: #040506;
-	border-radius: 5px;
+  background: #0b0b0e;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
-	background: #272932;
-	border-radius: 5px;
+  background: #2a2a32;
+  border-radius: 9999px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: #040506;
+  background: #3a3a45;
 }

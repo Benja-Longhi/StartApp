@@ -1,21 +1,25 @@
+import type { Metadata } from "next";
+import { Manrope } from "next/font/google";
 import "./globals.css";
-import NavBar from "../components/NavBar";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: "StartApp — Build your team project",
+    template: "%s · StartApp",
+  },
+  description:
+    "StartApp connects people with ideas to build startups and team projects together.",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
-      <head>
-        <title>StartApp</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600&display=swap" />
-      </head>
-      <body className="flex text-white flex-col">
-        {children}
-      </body>
+    <html lang="en" className={manrope.variable}>
+      <body className="min-h-screen font-sans">{children}</body>
     </html>
   );
 }
-                      
