@@ -198,7 +198,7 @@ export default function Home() {
                 Create a free account, tell us your skills and start building with people who share your drive.
               </p>
               <div className="relative mt-10 flex justify-center">
-                <ButtonLink href="/signup" size="lg" className="bg-white text-primary hover:bg-white/90">
+                <ButtonLink href="/signup" size="lg" variant="light">
                   Create your account <ArrowRight size={18} />
                 </ButtonLink>
               </div>

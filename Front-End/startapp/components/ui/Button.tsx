@@ -1,7 +1,7 @@
 import Link from "next/link";
 import clsx from "clsx";
 
-type Variant = "primary" | "secondary" | "ghost" | "outline";
+type Variant = "primary" | "light" | "secondary" | "ghost" | "outline";
 type Size = "sm" | "md" | "nav" | "lg";
 
 const base =
@@ -9,6 +9,7 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary: "bg-primary text-white hover:bg-primary-hover hover:shadow-glow",
+  light: "bg-white text-primary hover:bg-white/90 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)]",
   secondary: "bg-elevated text-ink hover:bg-line",
   ghost: "text-muted hover:text-ink hover:bg-elevated",
   outline: "border border-line text-ink hover:border-primary-soft hover:text-white",

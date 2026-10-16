@@ -27,7 +27,7 @@ export default function ProjectsPage() {
               Join a project that needs your skills, or publish your own idea and let builders come to you.
             </p>
             <div className="relative mt-7">
-              <CreateProjectDialog triggerClassName="bg-white text-primary hover:bg-white/90" />
+              <CreateProjectDialog triggerVariant="light" />
             </div>
           </section>
 

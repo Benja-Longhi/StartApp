@@ -8,7 +8,7 @@ import { categories } from "@/lib/data";
 const fieldClasses =
   "w-full rounded-xl border border-line bg-canvas px-4 py-3 text-sm text-ink placeholder:text-muted/70 focus:border-primary-soft focus:outline-none";
 
-export function CreateProjectDialog({ triggerClassName }: { triggerClassName?: string }) {
+export function CreateProjectDialog({ triggerVariant }: { triggerVariant?: "primary" | "light" }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
 
@@ -30,7 +30,7 @@ export function CreateProjectDialog({ triggerClassName }: { triggerClassName?: s
 
   return (
     <>
-      <Button type="button" onClick={() => setOpen(true)} className={triggerClassName}>
+      <Button type="button" variant={triggerVariant} onClick={() => setOpen(true)}>
         <Plus size={18} /> Create project
       </Button>
 
